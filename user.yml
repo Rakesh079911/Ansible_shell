@@ -1,0 +1,9 @@
+---
+- name: Install httpd on linux
+  hosts: localhost
+  become: yes
+  tasks: 
+      - name: Install httpd
+        yum : name=htttpd state=present
+        when: ansible_os_family == "Redhat" and 
+              ansible_distribution_version == "9.3"

@@ -1,0 +1,5 @@
+- hosts: localhost
+  become: yes
+  tasks:
+   - name: Install httpd on linux
+     action : yum httpd state=latest

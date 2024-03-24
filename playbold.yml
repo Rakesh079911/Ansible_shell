@@ -1,0 +1,29 @@
+--- 
+- name: Usage of tags
+  hosts: localhost
+  tasks:
+   - name: httpd install
+     yum: 
+      name: httpd
+      state: latest
+   - name: download the httpd.conf
+     get_url:
+      url: https://www.haio.ir/app/uploads/2021/12/Ansible-for-DevOps-by-Jeff-Geerling-z-lib.org_.pdf
+      dest: /var/www/html/ansible.pdf
+      mode: 0644
+     notify:
+      - restart httpd
+   - name: install vsftpd
+     yum:
+      name: vsftpd
+      state: latest
+   - name: start the service
+     service:
+      name: vsftpd
+      state: restarted   
+  handlers:
+   - name: restart httpd
+     service:
+      name: httpd
+      state: restarted
+      enabled: yes

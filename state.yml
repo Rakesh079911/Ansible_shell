@@ -1,0 +1,9 @@
+---
+- name: Create user and map it to group
+  hosts: localhost
+  become: yes
+  tasks:
+      - name: Create user
+        user: name={{item.name}} state=present group={{item.group}}
+        with_items: 
+              - ( name: 'Lisa', group: 'ansgrp') 

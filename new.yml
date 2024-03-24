@@ -1,0 +1,15 @@
+---
+- name: Create users
+  host: localhost
+  become: yes
+  tasks:
+        user:
+         name={{ item.username }}
+         shell={{ item.shell }}
+         groups={{ item.groups }}
+         createhome=yes
+         password={{ item.OSpass }}
+	   with_items:
+               - { name: 'Lisa', group: 'ansgroup' , shell: '/bin/bash' , password: Infosys@1233}
+               - { name: 'Suresh' group: 'ansgroup' , shell: '/bin/bash' , password: Infosys@123}
+               - { name: 'Raj' group: 'ansgroup' , shell: '/bin/bash' , password: Infosys@123}

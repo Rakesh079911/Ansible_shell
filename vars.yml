@@ -1,0 +1,13 @@
+---
+- name: Intro Linux
+  hosts: localhost
+  become: yes
+  vars:
+     pkg_name: nginx
+     user_name: test_user
+  tasks:
+     - name: Install nginx
+       yum: name={{pkg_name}} state=present
+      
+     - name: Create user
+       user: name={{user_name}} state=present
