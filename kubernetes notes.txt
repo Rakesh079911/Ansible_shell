@@ -1,0 +1,192 @@
+https://blog.kubecost.com/blog/kubernetes-node-affinity/
+https://komodor.com/learn/kubernetes-pvc-guide-basic-tutorial-and-troubleshooting-tips/
+https://www.cloudbees.com/blog/jenkins-multibranch-pipeline-with-git-tutorial#whats-a-jenkins-multibranch-pipeline
+https://medium.com/@th3b3ginn3r/understanding-service-accounts-in-kubernetes-e9d2abe19df8
+https://www.turing.com/interview-questions/terraform
+
+If we want to communicate with a Docker container from our host machine, we need to have a port mapping. Sometimes, we may start a container without mapping a port that we need later on.
+
+In this tutorial, we’ll discuss the importance of port mapping in Docker. We’ll look into different ways of adding a new port mapping once a Docker container is launched.
+
+(Click) FROM – pulls the specified base image from the repository
+(Click) MAINTAINER – tag helps you to manage the author credentials who has
+contributed towards building the image
+(Click) LABEL – Allows to add the Metadata via key value pairs, which can later be
+used to search the images
+(Click) ENV – allows us to set the shell variables that can be used during the image
+building
+(Click) RUN – used to install within the base image some software dependency or any
+file structure one needs
+(Click) ADD – used to copy file system from your local to your image
+(Click) WORKDIR – change working directory
+(Click) CMD – defines command
+(Click) USER – by default is the ROOT user
+(Click)
+4
+
+Git Revert is used to undo a change. This operation creates a new commit that undoes the change by reversing it. Revert is a safer option when working with other developers, as it preserves the commit history and doesn’t affect others’ work.
+
+Git Reset is used to undo operations by rewriting the commit history. This operation removes all commits between the current HEAD and the specified commit, and it restores the files in the working directory to the state of the specified commit. Reset can cause problems when working with other developers, so it should be used with caution.
+
+
+Unused local volumes are those which are not referenced by any containers. By default, it only removes anonymous volumes.
+ docker volume prune
+
+Port mapping is used to access the services running inside a Docker container. We open a host port to give us access to a corresponding open port inside the Docker container. Then all the requests that are made to the host port can be redirected into the Docker container.
+
+Port mapping makes the processes inside the container available from the outside.
+
+While running a new Docker container, we can assign the port mapping in the docker run command using the -p option:
+
+Namespaces are one of a feature in the Linux Kernel and fundamental aspect of containers on Linux. On the other hand, namespaces provide a layer of isolation. Docker uses namespaces of various kinds to provide the isolation that containers need in order to remain portable and refrain from affecting the remainder of the host system. Each aspect of a container runs in a separate namespace and its access is limited to that namespace.
+
+
+$ docker run -d -p 81:80 --name httpd-container httpd
+Copy
+The above command launches an httpd container and maps the host’s port 81 to port 80 inside that container.
+
+By default, the httpd server listens on port 80.
+
+So, we can now access the application using port 81 on the host machine:
+$ curl http://localhost:81
+<html><body><h1>It works!</h1></body></html>
+
+A PersistentVolume (PV) is a storage resource in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes.
+
+
+PersistentVolumes support the following access modes:
+
+ReadWriteOnce: The Volume can be mounted as a read-write by a single node.
+ReadOnlyMany: The Volume can be mounted read-only by many nodes.
+ReadWriteMany: The Volume can be mounted as a read-write by many nodes.
+A null resource is basically something that doesn't create anything on its own, but you can use it to define provisioners blocks. They also have a “trigger” attribute, which can be used to recreate the resource, hence to rerun the provisioner block if the trigger is hit.
+
+A persistent volume claim (PVC) is a request for storage by a user from a PV. Claims can request specific size and access modes (e.g: they can be mounted once read/write or many times read-only).
+
+Static Inventory:
+The static inventory is the most basic type of inventory that you can create in Ansible. We can manually create this file, which will include the group name and all the hosts that you want to run the Ansible playbooks against. Here is a sample inventory file:
+
+Dynamic Inventory comes in handy when your Ansible inventory fluctuates overs time, with different management nodes spinning up and shutting down frequently. Dynamic Inventory has two ways of retrieving the management nodes, inventory scripts and plugins.
+
+terraform validate
+
+invalid HCL syntax (e.g. missing trailing quote or equal sign)
+invalid HCL references (e.g. variable name or attribute which doesn't exist)
+same provider declared multiple times
+same module declared multiple times
+same resource declared multiple times
+invalid module name
+interpolation used in places where it's unsupported (e.g. variable, depends_on, module.source, provider)
+missing value for a variable (none of -var foo=... flag, -var-file=foo.vars flag, TF_VAR_foo environment variable, terraform.tfvars, or default value in the configuration)
+
+The main idea behind the Git flow branching strategy is to isolate your work into different types of branches. There are five different branch types in total:
+
+Main
+Develop
+Feature
+Release
+Hotfix
+The two primary branches in Git flow are main and develop. There are three types of supporting branches with different intended purposes: feature, release, and hotfix.
+This branching strategy consists of the following branches:
+
+Master 
+Develop
+Feature- to develop new features that branches off the develop branch 
+Release- help prepare a new production release; usually branched from the develop branch and must be merged back to both develop and master
+Hotfix- also helps prepare for a release but unlike release branches, hotfix branches arise from a bug that has been discovered and must be resolved; it enables developers to keep working on their own changes on the develop branch while the bug is being fixed.
+
+https://linux.how2shout.com/installing-mysql-8-server-client-on-amazon-linux-2023/ - how to install mysql on linux
+
+A normal pipeline job is meant for building a single branch from the SCM and deploy to a single environment. However, you can 
+
+A multibranch pipeline is meant for building multiple branches from a repository and deploy to multiple environments if required.
+
+A pipeline job supports both pipeline steps to be added in Jenkins configuration and form SCM.
+
+Use pipeline job for adhoc jobs, parameterised job executions and to debug pipeline as code.
+
+Do not use multibranch pipeline if you do not have a standard branching and CI/CD strategy.
+
+R{0-B~4~d8Y&
+
+
+Credentials stored in Jenkins can be used:
+
+anywhere applicable throughout Jenkins (i.e. global credentials),
+
+by a specific Pipeline project/item (read more about this in the Handling credentials section of Using a Jenkinsfile),
+
+by a specific Jenkins user (as is the case for Pipeline projects created in Blue Ocean).
+
+Jenkins can store the following types of credentials:
+
+Secret text - a token such as an API token (e.g. a GitHub personal access token),
+
+Username and password - which could be handled as separate components or as a colon separated string in the format username:password (read more about this in Handling credentials),
+
+Secret file - which is essentially secret content in a file,
+
+SSH Username with private key - an SSH public/private key pair,
+
+Certificate - a PKCS#12 certificate file and optional password, or
+
+Docker Host Certificate Authentication credentials.
+
+Resource quotas in Kubernetes are used to allocate and limit compute resources for individual namespaces within a cluster. They help ensure fair and efficient resource utilization among multiple applications or teams running within the same Kubernetes cluster.
+
+The following functions are performed in the above image:
+jenkins architecture
+Jenkins checks the Git repository at periodic intervals for any changes made in the source code.
+Each builds requires a different testing environment which is not possible for a single Jenkins server. In order to perform testing in different environments, Jenkins uses various Slaves as shown in the diagram.
+Jenkins Master requests these Slaves to perform testing and to generate test reports.
+
+ Jenkinsfile is a text file that stores the entire workflow as code and it can be checked into a SCM on your local system.
+
+
+
+A pipeline is a collection of jobs that brings the software from version control into the hands of the end users by using automation tools. It is a feature used to incorporate continuous delivery in our software development workflow.
+
+
+A multibranch job is simply a folder of pipeline jobs. For every branch you have, Jenkins will create a folder. So instead of creating a pipeline job for each of the branches you have in a git repository, you could use a multibranch job. This means that you’ll have to create only one job. You also need to define where the Jenkinsfile is, and it’s important that this file is at the same location in all the branches you create. Let’s create a job of this type to learn how to configure it.
+
+9.
+Explain CI/CD pipeline?
+
+
+A CI/CD pipeline in Jenkins automates the process of building, testing, and deploying software changes. It does so by connecting to the code repository and keeping a check for any new changes. When any change is detected Jenkins triggers the pipeline. It transits through stages like building, testing, and deploying. Jenkins compiles the code, runs tests, and deploys the application to the desired environment. Also, the pipeline ensures that the code changes meet the quality standards for fast and reliable software updates.
+7.
+How do you set up a Jenkin job?
+
+Hide Answer
+You can easily set up a new built job in Jenkins by following the below steps -
+Log on to your Jenkins dashboard
+Click on "New Items" which is displayed at the top left corner of your dashboard
+Enter the relevant details (Enter an item name, select "Freestyle project", and press "OK")
+Enter project details
+Enter repository URL
+After providing the details, tweak the settings under the "build" section as required
+Click "Apply" and "Save" the project
+Build source code by clicking "Build Now"
+Check the status under "Build History"
+Click on "Build Number" and then "Console Output" to see the status
+
+
+4.
+Mention the steps required to install Jenkins.
+Step 1: Install Java
+Step 2: Install the Apache Tomcat server
+Step 3: Download the war file in Jenkins
+Step 4: Deploy this file
+
+
+List the names of 3 pipelines in Jenkins.
+
+In Jenkins, the term "pipelines" generally refers to two major pipeline types: Scripted and Declarative pipelines, which are used to automate the software development process. However, there is also the Freestyle project, which, although not officially a pipeline, achieves similar objectives in a simpler way.
+
+Scripted Pipeline: The Scripted pipeline is a more powerful way to configure Jenkins jobs, using a Groovy-based Domain Specific Language (DSL). The Scripted pipeline code is written as a script, allowing developers to define the entire build process, test execution, and post-build actions. Scripted pipelines are represented by a Jenkinsfile stored in the project's source code repository, ensuring version control and a single source of truth for the pipeline configuration.
+
+Declarative Pipeline: The Declarative pipeline is an evolution of the Scripted pipeline, also using a Groovy-based DSL, but with an easier-to-read and maintain syntax. This pipeline type has a structured syntax, making it well-suited for more complex automation tasks. Declarative pipelines are represented by a Jenkinsfile within the source code repository, providing version control and easy access for pipeline updates.
+
+Freestyle Project: The Freestyle project is an easy-to-configure Jenkins job that uses a graphical user interface to define the build process, tests, and post-build actions. Although not as flexible as the Scripted and Declarative pipelines, Freestyle projects are suitable for relatively simple build processes.
+
+
